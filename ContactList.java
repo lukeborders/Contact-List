@@ -16,6 +16,7 @@ public class ContactList {
 		String[] commands = {"view: shows list of your contacts in alphabetical order","add contact: adds a contact to your list of contacts","stop: exits the program"};
 		String[] contacts = {}; //new array of type String
         int editNum = 0;
+		String newnumstring = "";
 		//String formattedInt = "(" + f.substring(0,4) + ")" + "-" + f.substring(3,7) + "-" + f.substring(6,10); // creates a string of the inputted phone number in the format of (###)-###-####
 		while(!command.equals("stop")) {
             if (command.equals("add contact")) {
@@ -30,6 +31,7 @@ public class ContactList {
                 }
                 System.out.println("Please Input the Contact Phone Number:");
                 c2 = scan.nextInt();
+				newnumstring = Integer.toString(c2);
                 if(Integer.toString(c2).length() != 10) {
                     System.out.println("Invalid Input: Phone Number must be 10 integers");
                 }
@@ -59,7 +61,27 @@ public class ContactList {
                     System.out.println(a); //prints every element in contacts[]
                 }
                 editNum = scan.nextInt();
+				System.out.println(list.get(editNum));
+				System.out.println("Do you need to edit the username? Y/N");
+				if(command.equals("Y")||command.equals("y")) {
+					System.out.println("Type in new name:");
+					c1= scan.nextLine();
+				}
+				else if(command.equals("N")||command.equals("n")) {
+					System.out.println("Do you need to edit the phone number? Y/N");
+					if(command.equals("Y")||command.equals("y")) {
+						System.out.println("Type in new phone number");
+						c2 = scan.nextInt();
+					}
+					else if(command.equals("N")||command.equals("n")) {
+						System.out.println("Okay. You can now type in another command");
+					}
+				}
+				list.set(editNum,new Contact(c1,c2));
             }
+			else {
+				System.out.println("Invalid Input");
+			}
             System.out.println('\n' + "Enter Command:");
             command = scan.nextLine();
         }
