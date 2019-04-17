@@ -1,4 +1,4 @@
-public class Contact {
+public class Contact extends ContactList {
 	private String name;
 	private int pNum;
 	public Contact(String n,int p) {
@@ -14,7 +14,10 @@ public class Contact {
 	public void setName(String n) {
 		name = n;
 	}
-	public void setPhoneNumber(String p) {
+	public void setPhoneNumber(int p) {
 		pNum =p;
 	}
+	public String toString() {
+        return "Contact Name: " + name + "Contact Phone Number: " + pNum;
+    }
 }
